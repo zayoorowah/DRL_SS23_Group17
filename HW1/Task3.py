@@ -1,5 +1,5 @@
-
 import numpy as np
+from Task2 import TrainGame
 
 class BasicAgent:
     def __init__(self, grid_size, goal_state):
@@ -60,3 +60,11 @@ def evaluate_policy(agent, grid, num_episodes):
             state_values[state] = state_returns[state] / state_counts[state]
     
     return state_values
+
+agent = BasicAgent(grid_size, goal_state)  # create an instance of our custom agent
+grid = TrainGame()  # create an instance of our GridWorld
+num_episodes = 1000
+episode_returns = []
+for i in range(num_episodes):
+        states, actions, rewards = episode(agent, grid)
+episode_returns.append(sum(rewards))
